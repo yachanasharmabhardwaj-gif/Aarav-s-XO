@@ -80,7 +80,7 @@ let showDraw = () => {
     msg.classList.remove("hide");
     setTimeout(() => {
         msgContainer.classList.add("show");
-    }, 50);
+    }, 10);
     
     disableBoxes();
     gameOver = true; 
@@ -93,7 +93,7 @@ let showWinner = (winner) => {
     msg.classList.remove("hide");
     setTimeout(() => {
         msgContainer.classList.add("show");
-    }, 50);
+    }, 10);
     
     disableBoxes();
     gameOver = true;
