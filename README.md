@@ -226,22 +226,30 @@ const winPatterns = [
     [2,4,6]
 ];
 
-//reset function
+//reset function function only activates when the game is ongoing
 let resetGame = () => {
+    if(gameOver) return; {
     turn0 = nextFirst;
     nextFirst = !nextFirst;
     gameOver = false;
     moveCount = 0;
     enableBoxes();
     msgContainer.classList.add("hide");
-}
+    };
+    
+};
 
-//newgame function
+//newgame function function only activates when the game is complete
 let newGame = () => {
     if (!gameOver) return; {
-        resetGame();
-    }
-}
+    turn0 = nextFirst;
+    nextFirst = !nextFirst;
+    gameOver = false;
+    moveCount = 0;
+    enableBoxes();
+    msgContainer.classList.add("hide");
+    };
+};
 
 //makes X and O apper in the boxes
 boxes.forEach((box) => {
@@ -254,7 +262,7 @@ boxes.forEach((box) => {
             box.innerText = "X";
             // box.style.color = "red";  <-- it makes x red
             turn0 = true;
-        }
+        };
         box.disabled = true;
         moveCount++;
         checkDraw();
