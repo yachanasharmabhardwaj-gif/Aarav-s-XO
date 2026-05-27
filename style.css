@@ -162,5 +162,5 @@ h1 {
 
 .hide {
     opacity: 1 !important;
-    display: none;
+    pointer-events: none;
 }
