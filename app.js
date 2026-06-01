@@ -11,9 +11,9 @@ let gameOver = false;//decide that game is over or not
 let moveCount = 0;//counts every move
 let nextFirst = false;//makes chance toggle on every play
 let botTimeout = null;//set Timeout
-let botMode = false;
-let playerSymbol = "O";
-let botSymbol = "X";
+let botMode = false;//switches mode between bot-human
+let playerSymbol = "O";//playerturn
+let botSymbol = "X";//bot turn
 
 
 //every winning pattern
