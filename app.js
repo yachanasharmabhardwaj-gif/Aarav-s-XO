@@ -10,7 +10,7 @@ let turn0 = true;//decides the turn
 let gameOver = false;//decide that game is over or not
 let moveCount = 0;//counts every move
 let nextFirst = false;//makes chance toggle on every play
-let botTimeout = null;
+let botTimeout = null;//set Timeout
 let botMode = false;
 let playerSymbol = "O";
 let botSymbol = "X";
@@ -28,8 +28,10 @@ const winPatterns = [
     [2,4,6]
 ];
 
+//toggles the bot-human 
 let toggleBot = () => {
     botMode = !botMode;
+    botBtn.innerText = "Human";
     botBtn.innerText = botMode ? "Bot" : "Human";
     turn0 = true;
     nextFirst = false;
@@ -40,6 +42,7 @@ let toggleBot = () => {
     msgContainer.classList.add("hide");
 }
 
+//genrate bot choices
 let genBotChoice = () => {
     let emptyIndexes = [];
     boxes.forEach((box, i) => {
@@ -56,6 +59,7 @@ let resetGame = () => {
     if(gameOver) {
         return;
     }; 
+    
     turn0 = nextFirst;
     nextFirst = !nextFirst;
     gameOver = false;
@@ -68,6 +72,7 @@ let resetGame = () => {
     if (botMode && !turn0) {
         botTimeout = setTimeout(botMove, 350);
     };
+
 };
 
 //newgame function only activates when game is complete
@@ -75,6 +80,7 @@ let newGame = () => {
     if (!gameOver) {
         return;
     };
+
     clearTimeout(botTimeout);
     turn0 = nextFirst;
     nextFirst = !nextFirst;
@@ -96,14 +102,15 @@ boxes.forEach((box) => {
         if (botMode && !turn0) { return; };
 
         if (turn0) {
-            box.innerText = "O";
+            box.innerText = playerSymbol;
             // box.style.color = "green";  <-- it makes o green
             turn0 = false;
         } else {
-            box.innerText = "X";
+            box.innerText = botSymbol;
             // box.style.color = "red";  <-- it makes x red
             turn0 = true;
         };
+
         box.disabled = true;
         moveCount++;
         checkDraw();
@@ -120,20 +127,31 @@ boxes.forEach((box) => {
     });
 });
 
+//updates the turn
 const updateSymbols = () => {
-    playerSymbol = turn0 ? "O" : "X";
-    botSymbol = turn0 ? "X" : "O";
+    if (turn0) {
+        playerSymbol = "O";
+    } else {
+        playerSymbol = "X";
+    };
+
+    if (turn0) {
+        botSymbol = "X";
+    } else {
+        botSymbol = "O";
+    };
 };
 
+//shows the bot choice
 const botMove = () => {
     if (gameOver) { return; };
     let idx = genBotChoice();
 
     if (!turn0) {
-        boxes[idx].innerText = "X";
+        boxes[idx].innerText = botSymbol;
         turn0 = true;
     } else {
-        boxes[idx].innerText = "O";
+        boxes[idx].innerText = playerSymbol;
         turn0 = false;
     };
 
@@ -214,5 +232,8 @@ newGameBtn.addEventListener("click", newGame);
 //make the resetgame button work
 resetBtn.addEventListener("click", resetGame);
 
-
+//make the bot-human button work
 botBtn.addEventListener("click", toggleBot);
+
+
+//:)
