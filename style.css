@@ -6,7 +6,6 @@
 }
 
 body {
-    height: 100vmin;
     background-color: #118ab2;
     text-align: center;
 }
@@ -47,10 +46,12 @@ h1 {
 }
 
 .container {
-    height: 85vh;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 10vmin;
+    margin-bottom: 5vmin;
 }
 
 .game {
@@ -120,6 +121,7 @@ h1 {
     height: 5vmin;
     width: 40vmin;
     margin-bottom: 5vmin;
+    margin-right: 5vmin;
     background-color: #a2bdb4;
     border: none;
     border-radius: 2.5vmin;
@@ -142,10 +144,38 @@ h1 {
     background-color: #78caad;
 }
 
+.BOTbtn {
+    height: 5vmin;
+    width: 40vmin;
+    margin-bottom: 5vmin;
+    margin-left: 5vmin;
+    background-color: #a2bdb4;
+    border: none;
+    border-radius: 2.5vmin;
+    box-shadow: 2px 2px 5px rgb(44, 44, 44);
+    padding:  0 0.5% 0 0.5%;
+    transition: all 0.9s ease-in-out 0.1s;
+    font-size: 2.5vmin;
+    font-weight: 25vmin;
+    color: #00533f;
+}
+
+.BOTbtn:hover {
+    scale: 1.15;
+    background-color: #90c0af;
+    font-weight: 35vmin;
+    box-shadow: 5px 5px 10px rgb(31, 31, 31);
+}
+.BOTbtn:active {
+    scale: 1.16;
+    background-color: #78caad;
+}
+
 .msg-container {
     height: 10vmin;
     opacity: 0;
     transition: all 1s ease-in-out 0.2s;
+    pointer-events: none;
 }
 
 .msg-container.show {
